@@ -1,0 +1,27 @@
+﻿@model IslaiduValdymoSistema.Models.Kategorija
+
+@{
+    ViewData["Title"] = "Šalinti kategoriją";
+}
+
+<h1>Šalinti kategoriją</h1>
+
+<h3>Ar tikrai norite pašalinti šią kategoriją?</h3>
+
+<div>
+    <p>
+        <strong>Pavadinimas:</strong> @Model.Pavadinimas
+    </p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">
+        Šalinti
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Atšaukti
+    </a>
+</form>

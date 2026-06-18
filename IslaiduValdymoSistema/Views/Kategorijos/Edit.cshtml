@@ -1,0 +1,22 @@
+﻿@model IslaiduValdymoSistema.Models.Kategorija
+@{
+    ViewData["Title"] = "Redaguoti kategoriją";
+}
+<h1>Redaguoti kategoriją</h1>
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+<div class="form-group">
+    <label asp-for="Pavadinimas" class="control-label"></label>
+        <input asp-for="Pavadinimas" class="form-control" />
+        <span asp-validation-for="Pavadinimas" class="text-danger"></span>
+</div>
+<br />
+<button type "submit" class="btn btn-primary">Išsaugoti pakeitimus</button>
+<a asp-action="Index" classs="btn btn-secondary">Grižti</a>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

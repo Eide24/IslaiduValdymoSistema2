@@ -1,0 +1,28 @@
+﻿@model IEnumerable<IslaiduValdymoSistema.Models.Kategorija>
+@{
+    ViewData["Title"] = "Kategorijos";
+}
+<h1>Kategorijos</h1>
+<p>
+<a asp-action="Create">Pridėti naują kategoriją</a>
+</p>
+
+<table class="table">
+<thead>
+<tr>
+<th>Pavadinimas</th>
+</tr>
+</thead>
+<tbody>
+@foreach (var kategorija in Model)
+{
+<tr>
+<td>@kategorija.Pavadinimas</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@kategorija.Id" class="btn btn-warning btn-sm">Redaguoti</a>
+                    <a asp-action="Delete" asp-route-id="@kategorija.Id" class="btn btn-danger btn-sm">Šalinti</a>
+                    </td>
+</tr>
+}
+</tbody>
+</table>

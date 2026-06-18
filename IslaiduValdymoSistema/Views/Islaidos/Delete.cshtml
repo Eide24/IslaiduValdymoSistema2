@@ -1,0 +1,36 @@
+﻿@model IslaiduValdymoSistema.Models.Islaida
+
+@{
+    ViewData["Title"] = "Šalinti išlaidą";
+}
+
+<h1>Šalinti išlaidą</h1>
+
+<div class="alert alert-danger" role="alert">
+    <h3>Ar tikrai norite pašalinti šią išlaidą?</h3>
+    <p class="mb-0">Šio veiksmo atšaukti nebus galima.</p>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Pavadinimas:</dt>
+            <dd class="col-sm-9">@Model.Pavadinimas</dd>
+
+            <dt class="col-sm-3">Suma:</dt>
+            <dd class="col-sm-9">@Model.Suma €</dd>
+
+            <dt class="col-sm-3">Data:</dt>
+            <dd class="col-sm-9">@Model.Data.ToShortDateString()</dd>
+
+            <dt class="col-sm-3">Kategorija:</dt>
+            <dd class="col-sm-9">@(Model.Kategorija?.Pavadinimas ?? "Nenurodyta")</dd>
+        </dl>
+    </div>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger me-2">Šalinti</button>
+    <a asp-action="Index" class="btn btn-secondary">Atšaukti</a>
+</form>
