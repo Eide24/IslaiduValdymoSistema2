@@ -27,9 +27,14 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Islaidos" asp-action="Index">Išlaidos</a>
                         </li>
+                        @if (User.IsInRole("Administratorius"))
+                        {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Kategorijos" asp-action="Index">Kategorijos</a>
+                                <a class="nav-link text-dark fw-bold text-success" asp-controller="Kategorijos" asp-action="Index">
+                                    <i class="bi bi-shield-lock"></i> Kategorijos
+                                </a>
                         </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Apie projekta</a>
                         </li>

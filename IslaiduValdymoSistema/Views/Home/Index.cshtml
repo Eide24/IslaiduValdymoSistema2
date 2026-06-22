@@ -1,8 +1,87 @@
-﻿
+﻿    @using Microsoft.AspNetCore.Identity
+    @inject SignInManager<IslaiduValdymoSistema.Models.ApplicationUser> SignInManager
+
     @{
-        ViewData["Title"] = "Išlaidų valdymo sistema";
+        ViewData["Title"] = "Sveiki!";
     }
-    <div class="text-center"> 
-    <h1 class="display-4">Išlaidų valdymo sistema</h1>
-    <p>Egzamino pasiruošimo projektas su ASP.NET Core MVC.</p>
-    </div>
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+      
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col">
+                    <h1 class="display-5 fw-bold text-primary">
+                        <i class="bi bi-hand-thumbs-up"></i> Sveiki, @User.Identity?.Name!
+                    </h1>
+                    <p class="lead text-muted">Jūs sėkmingai prisijungėte į Išlaidų valdymo sistemą</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 hover-card">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="bi bi-graph-up text-primary" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Mano išlaidos</h5>
+                            <p class="card-text text-muted">Peržiūrėkite ir valdykite visas savo išlaidas</p>
+                            <a asp-controller="Islaidos" asp-action="Index" class="btn btn-primary mt-3">
+                                <i class="bi bi-arrow-right"></i> Atidaryti
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 hover-card">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="bi bi-plus-circle text-success" style="font-size: 2.5rem;"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Pridėti išlaidą</h5>
+                            <p class="card-text text-muted">Greitai pridėkite naują išlaidą į sistemą</p>
+                            <a asp-controller="Islaidos" asp-action="Create" class="btn btn-success mt-3">
+                                <i class="bi bi-arrow-right"></i> Pradėti
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                @if (User.IsInRole("Administratorius"))
+                {
+                <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm border-0 hover-card border-success border-3">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                    <i class="bi bi-shield-lock text-success" style="font-size: 2.5rem;"></i>
+                            </div>
+                                <h5 class="card-title fw-bold">Kategorijų valdymas</h5>
+                                <p class="card-text text-muted">
+                                    <span class="badge bg-success">ADMIN</span><br>
+                                    Tvarkykite sistemoje naudojamas kategorijas
+                                </p>
+                                <a asp-controller="Kategorijos" asp-action="Index" class="btn btn-success mt-3">
+                                <i class="bi bi-arrow-right"></i> Atidaryti
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+
+        <style>
+            .hover-card {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .hover-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+            }
+        </style>
+    }
+   
+    
