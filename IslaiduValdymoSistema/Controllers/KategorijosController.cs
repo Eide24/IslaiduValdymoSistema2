@@ -5,7 +5,7 @@ using IslaiduValdymoSistema.Models;
 using Microsoft.AspNetCore.Authorization;
 namespace IslaiduValdymoSistema.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administratorius")]
     public class KategorijosController : Controller
     {
         private readonly ApplicationDbContext _context;

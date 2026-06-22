@@ -64,7 +64,8 @@ namespace IslaiduValdymoSistema.Controllers
             return View();
         }
 
-        
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Islaida islaida)
         {

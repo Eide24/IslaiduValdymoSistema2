@@ -3,25 +3,36 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-    <ul class="navbar-nav">
+<ul class="navbar-nav ms-auto">
     @if (SignInManager.IsSignedIn(User))
     {
-      <li class"nav-item">
-<span class="nav-link text-dark">Prisijunges @User.Identity?.Name</span>
-      </li>
-      <li class="nav-item">
-          <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" method="post">
-            <button type="submit" class="nav-link btn btn-link text-dark">Atsijungti</button>  
-          </form>
-</li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle"></i> @User.Identity?.Name
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li class="dropdown-header">Sąskaita</li>
+                <li>
+                    <form class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout" method="post">
+                        <button type="submit" class="btn btn-link text-danger w-100 text-start">
+                            <i class="bi bi-box-arrow-right"></i> Atsijungti
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </li>
     }
     else
     {
-     <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Registruotis</a>
-     </li> 
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Prisijungti</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">
+                <i class="bi bi-person-plus"></i> Registruotis
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark fw-bold text-primary" asp-area="Identity" asp-page="/Account/Login">
+                <i class="bi bi-box-arrow-in-right"></i> Prisijungti
+            </a>
         </li>
     }
-    </ul>
+</ul>

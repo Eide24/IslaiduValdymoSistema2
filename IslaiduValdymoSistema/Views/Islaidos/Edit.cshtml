@@ -16,7 +16,12 @@
 
     <div class="form-group mb-3">
         <label asp-for="Suma" class="control-label"></label>
-        <input asp-for="Suma" class="form-control" />
+        <input asp-for="Suma" 
+               type="number" 
+               step="0.01" 
+               min="0.01"
+               class="form-control"
+               placeholder="pvz. 10.50" />
         <span asp-validation-for="Suma" class="text-danger"></span>
     </div>
 
@@ -41,4 +46,4 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}b 
+}
